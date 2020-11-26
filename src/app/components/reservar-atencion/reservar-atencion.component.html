@@ -1,2 +1,118 @@
+<div class="alert" *ngIf="alerta" [class.alert-success]="alerta">
+  <b>Satisfactoriamente:</b> Reservado correctamente, en minutos nos
+  comunicaremos con usted.
+</div>
 
-<p>reservar-atencion works!</p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col align-self-center">
+      <div class="card text-center">
+        <div class="card-header">INICIAR SESION</div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" [formGroup]="formulario">
+            <div class="form-row text-left">
+              <!-- ***************
+                    NOMBRE
+               ********************-->
+              <div class="form-group col-md-6">
+                <label for="">Nombre del paciente *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nombre del paciente"
+                  name="nombre"
+                  id="nombre"
+                  formControlName="nombre"
+                  required
+                  minlength="3"
+                  maxlength="30"
+                  [class.is-invalid]="nombreNoValido"
+                />
+                <small class="text-danger" *ngIf="nombreNoValido"
+                  >Nombre obligatorio</small
+                >
+              </div>
+
+              <!-- ***************
+                    APELLIDO
+               ********************-->
+              <div class="form-group col-md-6">
+                <label for="">Apellido(s) del paciente *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Apellido del paciente"
+                  name="apellido"
+                  id="apellido"
+                  formControlName="apellido"
+                  required
+                  minlength="3"
+                  maxlength="30"
+                  [class.is-invalid]="apellidoNoValido"
+                />
+                <small class="text-danger" *ngIf="apellidoNoValido"
+                  >Apellido obligatorio</small
+                >
+              </div>
+
+              <!-- ***************
+                    FECHA DE NACIMIENTO
+               ********************-->
+              <div class="form-group col-md-6">
+                <label for="">Fecha de Naciemiento *</label>
+                <input
+                  type="date"
+                  name=""
+                  id=""
+                  class="form-control"
+                  placeholder=""
+                  aria-describedby="helpId"
+                  name="nacimiento"
+                  id="nacimiento"
+                  formControlName="nacimiento"
+                  [class.is-invalid]="nacimientoNoValido"
+                  max="{{ maxDate | date: 'yyyy-MM-dd' }}"
+                  min="{{ minDate | date: 'yyyy-MM-dd' }}"
+                />
+                <small class="text-danger" *ngIf="nacimientoNoValido"
+                  >Fecha de nacimiento obligatorio</small
+                >
+              </div>
+
+              <!-- ***************
+                    CELULAR
+               ********************-->
+              <div class="form-group col-md-6">
+                <label for="">Celular *</label>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  class="form-control"
+                  placeholder="Celular"
+                  name="celular"
+                  id="celular"
+                  formControlName="celular"
+                  [class.is-invalid]="celularNoValido"
+                />
+                <small class="text-danger" *ngIf="celularNoValido"
+                  >Celular obligatorio - Debe contener 8 números</small
+                >
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <!-- [disabled]="formulario.invalid" -->
+              <!-- [class.btn-secondary]="formulario.invalid" -->
+              Reservar
+            </button>
+          </form>
+        </div>
+        <div class="card-footer text-muted">
+          IMPORTANTE: El teléfono celular es obligatorio para confirmar la
+          reservación, en las proximas horas se le mandara un mensaje de
+          Whasapp.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

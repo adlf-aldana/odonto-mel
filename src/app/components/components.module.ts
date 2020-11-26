@@ -11,6 +11,7 @@ import { PacienteComponent } from './paciente/paciente.component';
 import { FacturaComponent } from './factura/factura.component';
 import { IngresosComponent } from './ingresos/ingresos.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,10 +25,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     IngresosComponent,
     NavbarComponent,
   ],
-  imports: [CommonModule,
-    AppRoutingModule],
-  exports: [
-    NavbarComponent
-  ]
+  imports: [CommonModule, AppRoutingModule, ReactiveFormsModule],
+  exports: [NavbarComponent],
 })
 export class ComponentsModule {}
